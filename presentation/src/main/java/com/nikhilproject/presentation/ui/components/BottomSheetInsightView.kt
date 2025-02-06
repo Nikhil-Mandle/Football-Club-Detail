@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
@@ -16,12 +17,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.nikhilproject.presentation.R
 import com.nikhilproject.presentation.model.BottomSheetInsights
 import com.nikhilproject.presentation.theme.LocalCustomColorPalette
-import com.nikhilproject.presentation.R
 import com.nikhilproject.presentation.utils.extension.BottomSheetFormatter.formatBottomSheetItem
 
 
@@ -44,6 +47,8 @@ fun BottomSheetInsightsView(
         dragHandle = { BottomSheetDefaults.DragHandle() },
         containerColor = LocalCustomColorPalette.current.screenBackground
     ) {
+        HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+
         Column(
             modifier = Modifier.padding(
                 top = dimensionResource(id = R.dimen.margin_large),
@@ -52,19 +57,22 @@ fun BottomSheetInsightsView(
         ) {
             Row {
                 Text(
-                    text = stringResource(id = R.string.rewards_count),
-                    style = MaterialTheme.typography.headlineLarge
+                    text = stringResource(id = R.string.total_count),
+                    style = MaterialTheme.typography.headlineLarge,
+                    color = Color.Black
                 )
                 Text(
                     text = bottomSheetDetails.itemCount.toString(),
-                    style = MaterialTheme.typography.headlineLarge
+                    style = MaterialTheme.typography.headlineLarge,
+                    color = Color.Black
                 )
             }
 
             Text(
                 modifier = Modifier.padding(top = dimensionResource(id = R.dimen.margin_medium)),
                 text = stringResource(id = R.string.top_three_characters),
-                style = MaterialTheme.typography.headlineLarge
+                style = MaterialTheme.typography.headlineLarge,
+                color = Color.Black
             )
 
             Column(modifier = Modifier.padding(top = dimensionResource(id = R.dimen.margin_small))) {
@@ -72,11 +80,13 @@ fun BottomSheetInsightsView(
                     Row(Modifier.padding(top = dimensionResource(id = R.dimen.margin_small))) {
                         Text(
                             text = characters[index].key.formatBottomSheetItem(),
-                            style = MaterialTheme.typography.bodyLarge
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = Color.Black
                         )
                         Text(
                             text = characters[index].value.toString(),
-                            style = MaterialTheme.typography.bodyLarge
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = Color.Black
                         )
                     }
                 }

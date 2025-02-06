@@ -7,7 +7,7 @@ sealed interface HomeUiState {
     data object Loading : HomeUiState
 
     data class Success(
-        val cardList: List<FootballClub>? = null,
+        val footballClubList: List<FootballClub>? = null,
         val carouselImages: List<Int>? = null
     ) : HomeUiState
 

@@ -9,7 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.nikhilproject.presentation.navigation.FootballClubNavHost
-import com.nikhilproject.presentation.theme.CardVaultTheme
+import com.nikhilproject.presentation.theme.FootballClubDetailTheme
 
 class HomeActivity : ComponentActivity() {
 
@@ -17,7 +17,7 @@ class HomeActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         setContent{
-            CardVaultTheme {
+            FootballClubDetailTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background

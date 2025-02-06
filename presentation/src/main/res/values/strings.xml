@@ -2,9 +2,9 @@
 <resources>
     <string name="generic_error">Something went wrong</string>
     <string name="top_three_characters">Top 3 Characters :</string>
-    <string name="rewards_count">Rewards count :</string>
-    <string name="reward_name">Cash back</string>
-    <string name="reward_description">2% cash back on all purchases</string>
+    <string name="total_count">Total count :</string>
+    <string name="player_name">Player Name</string>
+    <string name="player_description">Player Detail Description</string>
     <string name="no_data_found">No data found</string>
 
 </resources>

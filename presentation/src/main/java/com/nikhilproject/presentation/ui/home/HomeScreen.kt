@@ -38,7 +38,7 @@ fun HomeScreen(
 
     val homeState = homeViewModel.homeUiState.collectAsState()
     val bottomSheetInsights = homeViewModel.bottomSheetInsights.collectAsState()
-    val rewardsList = homeViewModel.rewardsList.collectAsState()
+    val playerDetailList = homeViewModel.playerDetailList.collectAsState()
     val searchQuery = homeViewModel._searchQuery.collectAsState()
 
     val pagerState = rememberPagerState(
@@ -72,12 +72,12 @@ fun HomeScreen(
             }
 
             is HomeUiState.Success -> {
-                CardListView(
+                PlayerDetailListView(
                     modifier = Modifier.getModifierWithScaffoldPadding(paddingValues = padding),
                     pagerState = pagerState,
                     carouselImage = (homeState.value as HomeUiState.Success).carouselImages
                         ?: emptyList(),
-                    rewardsList = rewardsList.value,
+                    playerDetailList = playerDetailList.value,
                     userQuery = searchQuery.value
                 ) { searchInput ->
                     homeViewModel.updateSearchQuery(searchInput)

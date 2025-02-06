@@ -22,7 +22,7 @@ import com.nikhilproject.presentation.R
 fun CarouselItem(@DrawableRes resourceId: Int) {
     Box(
         modifier = Modifier
-            .padding(horizontal = 10.dp)
+            .padding(horizontal = 5.dp)
             .clip(shape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_radius)))
             .fillMaxSize(),
     ) {

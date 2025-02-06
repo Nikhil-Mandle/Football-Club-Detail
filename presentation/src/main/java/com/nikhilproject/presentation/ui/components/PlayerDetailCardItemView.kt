@@ -18,16 +18,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.nikhilproject.domain.model.PlayerDetail
-import com.nikhilproject.presentation.theme.LocalCustomColorPalette
 import com.nikhilproject.presentation.R
+import com.nikhilproject.presentation.theme.LocalCustomColorPalette
 
 @Composable
-fun CardItemView(playerDetailItem: PlayerDetail) {
+fun PlayerDetailCardItemView(playerDetail: PlayerDetail) {
     Box(
         modifier = Modifier
             .clip(shape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_radius)))
@@ -39,7 +41,6 @@ fun CardItemView(playerDetailItem: PlayerDetail) {
     ) {
         Row(
             Modifier
-                .padding(dimensionResource(id = R.dimen.dp_8))
                 .fillMaxWidth()
         ) {
             Image(
@@ -47,8 +48,8 @@ fun CardItemView(playerDetailItem: PlayerDetail) {
                     .width(dimensionResource(id = R.dimen.dp_60))
                     .aspectRatio(1f)
                     .clip(shape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_radius))),
-                painter = painterResource(id = playerDetailItem.image),
-                contentDescription = "Card Image",
+                painter = painterResource(id = playerDetail.image),
+                contentDescription = "Player Detail Image",
                 contentScale = ContentScale.FillBounds
             )
             Column(
@@ -58,15 +59,29 @@ fun CardItemView(playerDetailItem: PlayerDetail) {
                     .align(Alignment.CenterVertically)
             ) {
                 Text(
-                    text = playerDetailItem.name,
-                    style = MaterialTheme.typography.titleMedium
+                    text = playerDetail.name,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.Black
                 )
                 Text(
                     modifier = Modifier.padding(top = dimensionResource(id = R.dimen.dp_4)),
-                    text = playerDetailItem.description,
-                    style = MaterialTheme.typography.titleSmall
+                    text = playerDetail.description,
+                    style = MaterialTheme.typography.titleSmall,
+                    color = Color.Black
                 )
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun PreviewCardItemView() {
+    PlayerDetailCardItemView(
+        playerDetail = PlayerDetail(
+            name = "Player Name",
+            description = "Description",
+            image = R.drawable.bg_splash_gradient
+        )
+    )
 }

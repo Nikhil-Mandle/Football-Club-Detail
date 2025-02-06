@@ -41,12 +41,12 @@ class HomeViewModel(
             initialValue = HomeUiState.Loading,
         )
 
-    val rewardsList: StateFlow<List<PlayerDetail>> = combine(
+    val playerDetailList: StateFlow<List<PlayerDetail>> = combine(
         homeUiState, currentSelectedItem, searchQuery
     ) { uiState, index, query ->
 
-        val cardRewards = (uiState as? HomeUiState.Success)
-            ?.cardList
+        val playerDetails = (uiState as? HomeUiState.Success)
+            ?.footballClubList
             ?.getOrNull(index)
             ?.playerDetails
             .orEmpty()
@@ -54,11 +54,11 @@ class HomeViewModel(
         if (query.isNotEmpty()) {
             val pattern = ".*$query.*"
             val regex = Regex(pattern, RegexOption.IGNORE_CASE)
-            cardRewards.filter { rewards ->
-                rewards.name.contains(regex)
+            playerDetails.filter { playerDetail ->
+                playerDetail.name.contains(regex)
             }
         } else {
-            cardRewards
+            playerDetails
         }
     }.stateIn(
         scope = viewModelScope,
@@ -67,10 +67,10 @@ class HomeViewModel(
     )
 
 
-    val bottomSheetInsights: StateFlow<BottomSheetInsights> = rewardsList
-        .map { rewardsList ->
-            val characterMap = findTopResults(rewardsList)
-            BottomSheetInsights(itemCount = rewardsList.size, characterOccurrences = characterMap)
+    val bottomSheetInsights: StateFlow<BottomSheetInsights> = playerDetailList
+        .map { playerDetailList ->
+            val characterMap = findTopResults(playerDetailList)
+            BottomSheetInsights(itemCount = playerDetailList.size, characterOccurrences = characterMap)
         }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.Eagerly,
@@ -87,11 +87,11 @@ class HomeViewModel(
     }
 
     private fun findTopResults(
-        rewardsList: List<PlayerDetail>,
+        playerDetailList: List<PlayerDetail>,
         numberOfItems: Int = 3,
     ): Map<Char, Int> {
         val characters = hashMapOf<Char, Int>()
-        for (item in rewardsList) {
+        for (item in playerDetailList) {
             for (data in item.name) {
                 if (!data.isWhitespace()) {
                     characters[data] = (characters[data] ?: 0) + 1
