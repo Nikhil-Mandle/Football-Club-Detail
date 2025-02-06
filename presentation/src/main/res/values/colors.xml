@@ -7,7 +7,7 @@
     <color name="searchBackgroundColor">#FDFDFD</color>
     <color name="cardSurface">#EAF5EA</color>
     <color name="primaryTextColor">#333333</color>
-    <color name="secondaryTextColor">#0FF33333</color>
+    <color name="secondaryTextColor">#616161</color>
     <color name="cardBorderColor">#CCEACC</color>
     <color name="fabBackgroundColor">#66C266</color>
     <color name="activeIndicator">#66C266</color>

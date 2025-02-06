@@ -1,11 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "com.nikhilproject.presentation"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
@@ -24,48 +25,37 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.0"
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
-        compose = true
+        dataBinding = true
+        viewBinding = true
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
 dependencies {
     implementation(project(":domain"))
 
+    implementation(libs.koin.android)
     implementation(libs.koin.core)
+    implementation(libs.koin.annotation)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.androidx.constraintlayout)
     implementation(libs.core.splash.screen)
-
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.koin.compose)
-    implementation(libs.koin.core)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.activity.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.material3.android)
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-
+    implementation(libs.androidx.databinding.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    ksp(libs.koin.ksp.compiler)
 }

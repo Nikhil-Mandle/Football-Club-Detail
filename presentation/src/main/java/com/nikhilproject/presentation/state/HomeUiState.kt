@@ -1,4 +1,4 @@
-package com.nikhilproject.presentation.ui.home
+package com.nikhilproject.presentation.state
 
 import androidx.annotation.StringRes
 import com.nikhilproject.domain.model.FootballClub

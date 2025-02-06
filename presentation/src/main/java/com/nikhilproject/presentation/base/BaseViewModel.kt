@@ -8,7 +8,7 @@ abstract class BaseViewModel<UiState> : ViewModel() {
 
     private val initialState by lazy { setInitialState() }
 
-    private val _uiState = MutableStateFlow(initialState)
+    protected val _uiState = MutableStateFlow(initialState)
     val uiState: StateFlow<UiState> = _uiState
 
     abstract fun setInitialState(): UiState

@@ -1,4 +1,4 @@
-package com.nikhilproject.presentation.ui.home
+package com.nikhilproject.presentation.ui.activity
 
 import androidx.lifecycle.viewModelScope
 import com.nikhilproject.domain.common.Result
@@ -7,6 +7,7 @@ import com.nikhilproject.domain.usecase.GetFootballClubDetailUseCase
 import com.nikhilproject.presentation.base.BaseViewModel
 import com.nikhilproject.presentation.mapper.ResultMapper
 import com.nikhilproject.presentation.model.BottomSheetInsights
+import com.nikhilproject.presentation.state.HomeUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +21,7 @@ class HomeViewModel(
     getFootballClubDetailUseCase: GetFootballClubDetailUseCase
 ) : BaseViewModel<HomeUiState>() {
 
-    private val searchQuery = MutableStateFlow("")
+    val searchQuery = MutableStateFlow("")
     val _searchQuery = searchQuery.asStateFlow()
 
     val currentSelectedItem = MutableStateFlow(-1)
@@ -78,11 +79,11 @@ class HomeViewModel(
         )
 
 
-    fun updateSearchQuery(searchInput:String){
+    fun updateSearchQuery(searchInput: String) {
         searchQuery.value = searchInput
     }
 
-    fun updateCurrentCarouselItem(selectedItem:Int){
+    fun updateCurrentCarouselItem(selectedItem: Int) {
         currentSelectedItem.value = selectedItem
     }
 

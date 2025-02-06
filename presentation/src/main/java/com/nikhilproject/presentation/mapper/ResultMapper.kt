@@ -2,8 +2,8 @@ package com.nikhilproject.presentation.mapper
 
 import com.nikhilproject.domain.common.Result
 import com.nikhilproject.domain.model.FootballClubData
-import com.nikhilproject.presentation.ui.home.HomeUiState
 import com.nikhilproject.presentation.R
+import com.nikhilproject.presentation.state.HomeUiState
 
 object ResultMapper {
     fun <T> homeStateErrorMapper(resultState: Result.ErrorState<T>): HomeUiState.Error {

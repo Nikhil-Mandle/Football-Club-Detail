@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-
-    <style name="Base.Theme.FootballClubDetails" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FootballDetails" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:statusBarColor">@color/windowBackground</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="Theme.FootballClubDetails" parent="Base.Theme.FootballClubDetails" />
+    <style name="Theme.FootballDetail" parent="Base.Theme.FootballDetails" />
 
-    <style name="TextAppearance.App.Heading" parent="Theme.FootballClubDetails">
+    <style name="TextAppearance.App.Heading" parent="Theme.FootballDetail">
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="TextAppearance.App.Subtitle" parent="Theme.FootballClubDetails">
+    <style name="TextAppearance.App.Subtitle" parent="Theme.FootballDetail">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/secondaryTextColor</item>
     </style>
 
-    <style name="TextAppearance.App.Title" parent="Theme.FootballClubDetails">
+    <style name="TextAppearance.App.Title" parent="Theme.FootballDetail">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
@@ -31,10 +33,9 @@
         <item name="cornerSize">5%</item>
     </style>
 
-    <style name="TextAppearance.App.Body" parent="Theme.FootballClubDetails">
+    <style name="TextAppearance.App.Body" parent="Theme.FootballDetail">
         <item name="android:textSize">18sp</item>
     </style>
-
     <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_screen</item>
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -42,10 +43,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="postSplashScreenTheme">@style/Theme.FootballClubDetails</item>
+        <item name="postSplashScreenTheme">@style/Theme.FootballDetail</item>
     </style>
-
-    <style name="SearchBarTheme" parent="Theme.FootballClubDetails">
+    <style name="SearchBarTheme" parent="Theme.FootballDetail">
         <item name="android:textColor">#757575</item>
     </style>
 </resources>
