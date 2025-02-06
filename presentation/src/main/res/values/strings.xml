@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="generic_error">Something went wrong</string>
+    <string name="top_three_characters">Top 3 Characters :</string>
+    <string name="rewards_count">Rewards count :</string>
+    <string name="reward_name">Cash back</string>
+    <string name="reward_description">2% cash back on all purchases</string>
+    <string name="no_data_found">No data found</string>
+
+</resources>

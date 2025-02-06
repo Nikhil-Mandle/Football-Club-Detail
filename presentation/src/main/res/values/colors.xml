@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EAF5EA</color>
+    <color name="colorPrimaryDark">#1B5E20</color>
+    <color name="colorAccent">#66C266</color>
+    <color name="windowBackground">#F7F7F7</color>
+    <color name="searchBackgroundColor">#FDFDFD</color>
+    <color name="cardSurface">#EAF5EA</color>
+    <color name="primaryTextColor">#333333</color>
+    <color name="secondaryTextColor">#0FF33333</color>
+    <color name="cardBorderColor">#CCEACC</color>
+    <color name="fabBackgroundColor">#66C266</color>
+    <color name="activeIndicator">#66C266</color>
+    <color name="defaultIndicator">#BDBDBD</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+</resources>
