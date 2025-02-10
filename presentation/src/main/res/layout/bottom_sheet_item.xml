@@ -11,7 +11,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/horizontal_margin_medium"
-            android:text="@string/rewards_count"
+            android:text="@string/total_count"
             android:theme="@style/TextAppearance.App.Body"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

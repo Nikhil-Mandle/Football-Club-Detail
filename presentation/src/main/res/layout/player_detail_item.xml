@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/horizontal_margin_large"
+        android:layout_marginHorizontal="@dimen/horizontal_margin_medium"
         android:layout_marginVertical="@dimen/dp_3"
         android:padding="@dimen/dp_5"
         android:background="@drawable/bg_card_item">
@@ -26,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/horizontal_margin_medium"
-            tools:text="@string/reward_name"
+            tools:text="@string/player_name"
             android:inputType="textNoSuggestions"
             android:theme="@style/TextAppearance.App.Title"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:inputType="textMultiLine|textNoSuggestions"
-            tools:text="@string/reward_description"
+            tools:text="@string/player_description"
             android:theme="@style/TextAppearance.App.Subtitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/card_name"

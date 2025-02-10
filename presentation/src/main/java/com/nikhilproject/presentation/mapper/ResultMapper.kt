@@ -18,7 +18,7 @@ object ResultMapper {
 
     fun homeStateSuccessMapper(resultState: Result.SuccessState<FootballClubData>) =
         HomeUiState.Success(
-            cardList = resultState.data.footballClubs,
+            footballClubCardList = resultState.data.footballClubs,
             carouselImages = resultState.data.footballClubs.map { it.image },
         )
 }

@@ -7,27 +7,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nikhilproject.presentation.R
 import com.nikhilproject.presentation.databinding.HomeCarouselItemBinding
 
-class CardCarouselAdapter(
-    private val cardImageList: List<Int>
-) : RecyclerView.Adapter<CardCarouselAdapter.CardViewHolder>() {
+class FootballClubCarouselAdapter(
+    private val footballClubImageList: List<Int>
+) : RecyclerView.Adapter<FootballClubCarouselAdapter.FootballClubViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FootballClubViewHolder {
         val mBinding = DataBindingUtil.inflate<HomeCarouselItemBinding>(
             LayoutInflater.from(parent.context),
             R.layout.home_carousel_item,
             parent,
             false
         )
-        return CardViewHolder(mBinding)
+        return FootballClubViewHolder(mBinding)
     }
 
-    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        holder.setData(cardImageList[position])
+    override fun onBindViewHolder(holder: FootballClubViewHolder, position: Int) {
+        holder.setData(footballClubImageList[position])
     }
 
-    override fun getItemCount(): Int = cardImageList.size
+    override fun getItemCount(): Int = footballClubImageList.size
 
-    inner class CardViewHolder(private val mBinding: HomeCarouselItemBinding) :
+    inner class FootballClubViewHolder(private val mBinding: HomeCarouselItemBinding) :
         RecyclerView.ViewHolder(mBinding.root) {
 
         fun setData(sliderImage: Int) {

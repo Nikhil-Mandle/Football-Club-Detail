@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
-            android:layout_marginHorizontal="@dimen/horizontal_margin_large"
+            android:layout_marginHorizontal="28dp"
             app:shapeAppearanceOverlay="@style/RoundedImageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -7,7 +7,7 @@ import com.nikhilproject.common.model.FootballClubDataRemote
 
 object FootballClubDataData {
     val footballClubRemoteData = FootballClubDataRemote(
-        footballClubCards = listOf(
+        footballClubRemote = listOf(
             FootballClubRemote(
                 image = R.drawable.ic_real_madrid,
                 name = "Real Madrid",

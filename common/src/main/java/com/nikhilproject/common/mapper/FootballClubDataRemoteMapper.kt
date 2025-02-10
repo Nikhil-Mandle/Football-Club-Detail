@@ -7,7 +7,7 @@ object FootballClubDataRemoteMapper :
     BaseRemoteMapper<FootballClubDataRemote, FootballClubDataEntity> {
     override fun mapFromRemote(remoteObject: FootballClubDataRemote): FootballClubDataEntity {
         return FootballClubDataEntity(
-            footballClub = remoteObject.footballClubCards.map { footballClubRemote ->
+            footballClub = remoteObject.footballClubRemote.map { footballClubRemote ->
                 FootballClubRemoteMapper.mapFromRemote(footballClubRemote)
             }
         )

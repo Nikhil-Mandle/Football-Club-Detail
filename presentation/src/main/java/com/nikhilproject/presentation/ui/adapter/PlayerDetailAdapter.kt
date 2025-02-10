@@ -6,35 +6,35 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.nikhilproject.domain.model.PlayerDetail
 import com.nikhilproject.presentation.R
-import com.nikhilproject.presentation.databinding.RewardItemBinding
+import com.nikhilproject.presentation.databinding.PlayerDetailItemBinding
 
 class PlayerDetailAdapter(
     private val playerDetailList: List<PlayerDetail>
-) : RecyclerView.Adapter<PlayerDetailAdapter.RewardViewHolder>() {
+) : RecyclerView.Adapter<PlayerDetailAdapter.PlayerDetailViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RewardViewHolder {
-        val mBinding = DataBindingUtil.inflate<RewardItemBinding>(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerDetailViewHolder {
+        val mBinding = DataBindingUtil.inflate<PlayerDetailItemBinding>(
             LayoutInflater.from(parent.context),
-            R.layout.reward_item,
+            R.layout.player_detail_item,
             parent,
             false
         )
-        return RewardViewHolder(mBinding)
+        return PlayerDetailViewHolder(mBinding)
     }
 
-    override fun onBindViewHolder(holder: RewardViewHolder, position: Int) {
-        holder.bindData(reward = playerDetailList[position])
+    override fun onBindViewHolder(holder: PlayerDetailViewHolder, position: Int) {
+        holder.bindData(playerDetail = playerDetailList[position])
     }
 
     override fun getItemCount(): Int = playerDetailList.size
 
-    inner class RewardViewHolder(private val mBinding: RewardItemBinding) :
+    inner class PlayerDetailViewHolder(private val mBinding: PlayerDetailItemBinding) :
         RecyclerView.ViewHolder(mBinding.root) {
 
-        fun bindData(reward: PlayerDetail) {
-            mBinding.cardName.text = reward.name
-            mBinding.cardDescription.text = reward.description
-            mBinding.cardImage.setBackgroundResource(reward.image)
+        fun bindData(playerDetail: PlayerDetail) {
+            mBinding.cardName.text = playerDetail.name
+            mBinding.cardDescription.text = playerDetail.description
+            mBinding.cardImage.setBackgroundResource(playerDetail.image)
         }
     }
 }

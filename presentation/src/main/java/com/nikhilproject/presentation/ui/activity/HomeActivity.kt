@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.nikhilproject.presentation.ui.adapter.CardCarouselAdapter
+import com.nikhilproject.presentation.ui.adapter.FootballClubCarouselAdapter
 import com.nikhilproject.presentation.ui.adapter.PlayerDetailAdapter
 import com.nikhilproject.presentation.ui.dialog.BottomSheetDialog
 import com.nikhilproject.presentation.utils.extension.ViewExtension.showToast
@@ -26,12 +26,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
-
     private val homeViewModel: HomeViewModel by viewModel()
 
-    private lateinit var rewardsAdapter: PlayerDetailAdapter
-    private lateinit var cardCarouselAdapter: CardCarouselAdapter
-
+    private lateinit var playerDetailAdapter: PlayerDetailAdapter
+    private lateinit var footballClubCarouselAdapter: FootballClubCarouselAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -72,8 +70,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
                 }
 
                 launch {
-                    homeViewModel.rewardsList.collectLatest { list ->
-                        setRewardsAdapter(list)
+                    homeViewModel.playerDetailList.collectLatest { list ->
+                        setPlayerDetailAdapter(list)
                     }
                 }
             }
@@ -115,20 +113,20 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     private fun setDataAdapter(
         carouselData: List<Int>
     ) {
-        cardCarouselAdapter = CardCarouselAdapter(carouselData)
+        footballClubCarouselAdapter = FootballClubCarouselAdapter(carouselData)
         dataBinding.apply {
-            homeCarousel.viewPager.adapter = cardCarouselAdapter
+            homeCarousel.viewPager.adapter = footballClubCarouselAdapter
             TabLayoutMediator(homeCarousel.tabLayout, homeCarousel.viewPager) { tab, position ->
             }.attach()
         }
     }
 
-    private fun setRewardsAdapter(
+    private fun setPlayerDetailAdapter(
         playerDetail: List<PlayerDetail>
     ) {
-        rewardsAdapter = PlayerDetailAdapter(playerDetail)
+        playerDetailAdapter = PlayerDetailAdapter(playerDetail)
         dataBinding.apply {
-            itemList.adapter = rewardsAdapter
+            itemList.adapter = playerDetailAdapter
             itemList.layoutManager = LinearLayoutManager(this@HomeActivity)
 
         }

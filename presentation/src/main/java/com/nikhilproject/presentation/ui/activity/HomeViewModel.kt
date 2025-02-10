@@ -11,7 +11,6 @@ import com.nikhilproject.presentation.state.HomeUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
@@ -22,10 +21,8 @@ class HomeViewModel(
 ) : BaseViewModel<HomeUiState>() {
 
     val searchQuery = MutableStateFlow("")
-    val _searchQuery = searchQuery.asStateFlow()
 
     val currentSelectedItem = MutableStateFlow(-1)
-    val _currentSelectedItem = currentSelectedItem.asStateFlow()
 
     override fun setInitialState(): HomeUiState = HomeUiState.Nothing
 
@@ -42,12 +39,12 @@ class HomeViewModel(
             initialValue = HomeUiState.Loading,
         )
 
-    val rewardsList: StateFlow<List<PlayerDetail>> = combine(
+    val playerDetailList: StateFlow<List<PlayerDetail>> = combine(
         homeUiState, currentSelectedItem, searchQuery
     ) { uiState, index, query ->
 
-        val cardRewards = (uiState as? HomeUiState.Success)
-            ?.cardList
+        val footballClubPlayerDetail = (uiState as? HomeUiState.Success)
+            ?.footballClubCardList
             ?.getOrNull(index)
             ?.playerDetails
             .orEmpty()
@@ -55,11 +52,11 @@ class HomeViewModel(
         if (query.isNotEmpty()) {
             val pattern = ".*$query.*"
             val regex = Regex(pattern, RegexOption.IGNORE_CASE)
-            cardRewards.filter { rewards ->
-                rewards.name.contains(regex)
+            footballClubPlayerDetail.filter { playerDetail ->
+                playerDetail.name.contains(regex)
             }
         } else {
-            cardRewards
+            footballClubPlayerDetail
         }
     }.stateIn(
         scope = viewModelScope,
@@ -68,31 +65,25 @@ class HomeViewModel(
     )
 
 
-    val bottomSheetInsights: StateFlow<BottomSheetInsights> = rewardsList
-        .map { rewardsList ->
-            val characterMap = findTopResults(rewardsList)
-            BottomSheetInsights(itemCount = rewardsList.size, characterOccurrences = characterMap)
+    val bottomSheetInsights: StateFlow<BottomSheetInsights> = playerDetailList
+        .map { playerDetailList ->
+            val characterMap = findTopResults(playerDetailList)
+            BottomSheetInsights(
+                itemCount = playerDetailList.size,
+                characterOccurrences = characterMap
+            )
         }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.Eagerly,
             initialValue = BottomSheetInsights(itemCount = 0, characterOccurrences = emptyMap()),
         )
 
-
-    fun updateSearchQuery(searchInput: String) {
-        searchQuery.value = searchInput
-    }
-
-    fun updateCurrentCarouselItem(selectedItem: Int) {
-        currentSelectedItem.value = selectedItem
-    }
-
     private fun findTopResults(
-        rewardsList: List<PlayerDetail>,
+        playerDetailList: List<PlayerDetail>,
         numberOfItems: Int = 3,
     ): Map<Char, Int> {
         val characters = hashMapOf<Char, Int>()
-        for (item in rewardsList) {
+        for (item in playerDetailList) {
             for (data in item.name) {
                 if (!data.isWhitespace()) {
                     characters[data] = (characters[data] ?: 0) + 1
